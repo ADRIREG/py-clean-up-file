@@ -1,6 +1,4 @@
 import os
-import traceback
-from typing import Optional
 
 
 class CleanUpFile:
@@ -10,11 +8,7 @@ class CleanUpFile:
     def __enter__(self) -> "CleanUpFile":
         return self
 
-    def __exit__(self,
-                 exc_type: type,
-                 exc_value: Exception,
-                 traceback: Optional[traceback]) \
-            -> None:
+    def __exit__(self, *args) -> None:
         if os.path.exists(self.filename):
             os.remove(self.filename)
             print(f"{self.filename} has been deleted.")
